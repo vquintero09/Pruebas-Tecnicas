@@ -1,0 +1,102 @@
+<main class="bg-black py-10 rounded-none">
+  <mat-card class="card h-full  w-[540px] mx-auto text-white px-10 py-2">
+
+    <mat-card-header class="flex flex-col text-center">
+      <mat-card-title class="">Registro de Usuario </mat-card-title>
+      <p class="text-sm">Crea una nueva cuenta para acceder al sistema</p>
+    </mat-card-header>
+
+    <mat-card-content class="content mt-4">
+      <form class=" w-full" [formGroup]="registerForm" (submit)="onSubmit()">
+
+        <!--NAME INPUT-->
+        <div class="flex flex-col mb-3 p-1">
+          <label for="name" class="mb-2 text-base">Nombre</label>
+          <input 
+            type="text" id="name" placeholder="Anonimo Fulano" formControlName="name"
+            class="h-12 rounded-md pl-3 bg-black border border-[#3a3939] hover:border-[#545252]"
+            [ngClass]="{'border-red-700' : subbmit && hasError('name', 'required')}"
+          >
+          <mat-error *ngIf="subbmit && hasError('name', 'required')">
+            <span class="text-red-700 text-sm">El Nombre es requerido</span>
+          </mat-error>
+        </div>
+
+        <!--AGE INPUT-->
+        <div class="flex flex-col mb-3 p-1">
+          <label for="age" class="mb-2 text-base">Edad</label>
+          <input 
+            type="number" id="age" placeholder="25" formControlName="age"
+            class="h-12 rounded-md pl-3 bg-black border border-[#3a3939] hover:border-[#545252]"
+            [ngClass]="{'border-red-700' : subbmit && hasError('age', 'required')}"
+          >
+          <mat-error *ngIf="subbmit && hasError('age', 'required')">
+            <span class="text-red-700 text-sm">La edad es requerida</span>
+          </mat-error>
+          <mat-error *ngIf="subbmit && hasError('age', 'customAgeValidator')">
+            <span class="text-red-700 text-sm">La edad minima es 18</span>
+          </mat-error>
+        </div>
+        
+        <!--E-MAIL INPUT-->
+        <div class="flex flex-col mb-3 p-1">
+          <label for="email" class="mb-2 text-base">Correo Electrónico</label>
+          <input 
+            type="email" id="email" placeholder="victor.quin@ejemplo.com" formControlName="email"
+            class="h-12 rounded-md pl-3 bg-black border border-[#3a3939] hover:border-[#545252]"
+            [ngClass]="{'border-red-700' : subbmit && hasError('email', 'required')}"
+          >
+          <mat-error *ngIf="subbmit && hasError('email', 'required')">
+            <span class="text-red-700 text-sm">El correo electrónico es requerido</span>
+          </mat-error>
+        </div>
+
+        <!--PASSWORD INPUT-->
+        <div class="flex flex-col mb-3 p-1">
+          <label for="password" class="mb-2 text-base">Contraseña</label>
+          <input 
+            type="password" id="password" placeholder="********" formControlName="password"
+            class="h-12 rounded-md pl-3 bg-black border border-[#3a3939] hover:border-[#545252]"
+            [ngClass]="{'border-red-700' : subbmit && hasError('password', 'required') }"
+          >
+          <mat-error *ngIf="subbmit && hasError('password', 'required') || subbmit && hasError('password', 'customPassword')">
+            <span class="text-red-700 text-sm">La contraseña debe de tener almenos una letra mayuscula, una minuscula y un minimo 8 caracteres</span>
+          </mat-error>
+        </div>
+        
+        <!--CONFIRM PASSWORD INPUT-->
+        <div class="flex flex-col mb-3 p-1">
+          <label for="confirm-password" class="mb-2 text-base">Confirmar Contraseña</label>
+          <input 
+            type="password" id="confirm-password" placeholder="********" formControlName="confirmPassword"
+            class="h-12 rounded-md pl-3 bg-black border border-[#3a3939] hover:border-[#545252]"
+            [ngClass]="{'border-red-700' : subbmit && hasError('confirmPassword', 'required')}"
+          >
+         
+          <mat-error *ngIf="subbmit && registerForm.errors?.['crossPasswordMatchingValidator']">
+            <span class="text-red-700 text-sm">La contraseñas no coinciden</span>
+          </mat-error>
+        </div>
+
+        <!--BUTTON SUBMIT-->
+        <mat-card-actions class="relative actions">
+          <button type="submit" 
+            [ngClass]="{'bg-[#100f0f] text-zinc-500  p-3 gap-2' : subbmit}"
+            class="w-full h-12 py-1 flex justify-center items-center rounded-full bg-black border border-[#2e2d2d] hover:border-white" 
+            [disabled]="subbmit">
+            <ng-container *ngIf="subbmit; else register">
+              <mat-spinner [diameter]="18">
+                <mat-progress-spinner></mat-progress-spinner>
+              </mat-spinner>
+              <span>Procesando...</span>
+            </ng-container>
+            <ng-template #register>Registrar</ng-template>
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</main>
+
+
+

@@ -1,0 +1,56 @@
+<main class="bg-black h-screen py-10 relative">
+  <mat-card class="h-full w-1/3 mx-auto card">
+    <mat-card-header class="flex flex-col text-center items-center">
+      <svg class="mb-4" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#24b121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+      <h5 class="text-green-500 ">¡Registro Exitoso!</h5>
+      <p class="text-zinc-500">Gracias por registrarte, aquí estan los datos que ingresaste:</p>
+    </mat-card-header>
+    <mat-card-content class="content text-white mt-6 mx-8">
+
+      <!-- Nombre -->
+      <section class="flex items-center border-b border-gray-800 p-4 mb-4 justify-start">
+        <div class="mr-3 h-10 w-10 rounded-full bg-green-500/10 flex items-center justify-center">
+          <ion-icon name="person-outline" class="text-green-500"></ion-icon>
+        </div>
+        <div>
+          <p class="text-sm text-gray-400 m-0 text">Nombre</p>
+          <p class="max-sm:text-sm font-medium pb-0">{{DataUserForm?.name}}</p>
+        </div>
+      </section>
+
+      <!-- Correo Electrónico -->
+      <section class="flex items-center border-b border-gray-800 p-4 mb-4 justify-start">
+        <div class="mr-3 h-10 w-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+          <ion-icon name="mail-outline" class="text-blue-500"></ion-icon>
+        </div>
+        <div>
+          <p class="text-sm text-gray-400 m-0 text">Correo Electrónico</p>
+          <p class="font-medium pb-0">{{DataUserForm?.email}}</p>
+        </div>
+      </section>
+
+      <!-- Edad -->
+      <section class="flex items-center p-4 mb-4 justify-start">
+        <div class="mr-3 h-10 w-10 rounded-full bg-purple-500/10 flex items-center justify-center">
+          <ion-icon name="calendar-clear-outline" class="text-purple-500"></ion-icon>
+        </div>
+        <div>
+          <p class="text-sm text-gray-400 m-0 text">Edad</p>
+          <p class="font-medium pb-0">{{DataUserForm?.age}} años</p>
+        </div>
+      </section>
+
+    </mat-card-content>
+    <mat-card-actions class="w-full absolute bottom-0 ">
+      <button (click)="returnRegister()" 
+      class="w-full h-12 text-white flex justify-center items-center rounded-lg 
+      bg-black border border-[#2e2d2d] hover:border-white"
+      >
+        Volver
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</main>

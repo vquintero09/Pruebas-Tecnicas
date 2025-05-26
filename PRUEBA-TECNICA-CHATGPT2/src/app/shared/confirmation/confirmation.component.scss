@@ -1,0 +1,26 @@
+.card{
+  background-color: #0a0a0a;
+  border: .9px solid #2e2d2d;
+}
+.content {
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+ion-icon {
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 540px) {
+  .card {
+    width: 90%;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .card {
+    width: 70%;
+  }
+}
