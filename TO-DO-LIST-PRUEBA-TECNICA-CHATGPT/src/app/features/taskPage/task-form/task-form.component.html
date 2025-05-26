@@ -1,0 +1,42 @@
+<form class="flex flex-col" [formGroup]="taskForm" (submit)="onSubmit()">
+  
+  <div>
+    <input 
+    type="text" 
+    placeholder="Titulo de la tarea..." 
+    formControlName="title" 
+    class="h-10 w-full rounded-lg bg-[#2D3339] border border-gray-700 
+    text-white placeholder:text-gray-400 p-4 text-sm focus-visible:outline-none 
+    focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 
+    focus-visible:ring-offset-[#1E2429]">
+    <mat-error></mat-error>
+  </div>
+
+  <div class="mt-3">
+    <textarea 
+    id="description" 
+    placeholder="Descripcion (opcional)..." 
+    formControlName="description"
+    class="min-h-[60px] w-full rounded-lg bg-[#2D3339] border border-gray-700 
+    text-white placeholder:text-gray-400 pt-3 px-4 py-2 text-sm
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white
+    focus-visible:ring-offset-1 focus-visible:ring-offset-[#1E2429]">
+    </textarea>
+  </div>
+
+  <mat-error
+  *ngIf="inputInvalid()" 
+  class="h-7 py-1 my-2  flex justify-center items-center gap-1 border rounded-lg text-sm 
+  border-[#FF5252] bg-[#3A2A2A] text-[#FF5252]"
+  [@slideDown]>
+    <ion-icon name="alert-circle-outline"></ion-icon>
+    <span>Por favor ingresa un título para la tarea</span>
+  </mat-error>
+  
+  <button class="h-10 flex justify-center items-center bg-[#2E7BDC] rounded-lg text-white">
+    <ion-icon name="add-circle-outline"></ion-icon>
+    <span>Agregar Tarea</span>
+  </button>
+
+</form>
+

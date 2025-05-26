@@ -1,0 +1,59 @@
+<mat-card class="card" *ngIf="tasks.length; else noTask">
+  @for (task of tasks.slice().reverse(); track $index) {
+    <mat-card-content class="flex content" [ngClass]="{'completed': task?.completed}">
+
+    <!-- Checkbox circular -->
+    <label 
+      class="flex items-center justify-center h-5 w-6 mr-4 mt-1 border-2  border-zinc-500 
+      rounded-full cursor-pointer hover:border-white hover:outline hover:outline-4 
+      hover:outline-[#ffffff1a] hover:bg-[#ffffff1a] transition-colors duration-200"
+      [ngClass]="{'border-[#60af4c]' : task?.completed}">
+
+      <input type="checkbox" class="hidden peer" (click)="ToggleCompleted(task)"/>
+      <span class="flex items-center justify-center h-full w-full rounded-full peer-checked:bg-transparent">
+
+        <!-- SVG de la flecha -->
+        @if(task?.completed) {
+          <svg 
+          xmlns="http://www.w3.org/2000/svg" fill="none"  
+          stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"
+          class="peer-checked:block h-3 w-3 text-[#4CAF50] hover:text-white">
+            <path 
+            stroke-linecap="round" 
+            stroke-linejoin="round" d="M5 13l4 4L19 7"
+            />
+          </svg>
+        }
+      </span>
+    </label>
+    
+    <!--TASK INFO-->
+    <section class="w-full">
+      <p class="font-medium break-words line-clamp-3" [ngClass]="{'line-through text-[#A5D6A7]': task?.completed}">
+        {{task?.title}}
+      </p>
+      <p class="text-pretty text-sm text-gray-300 break-words" [ngClass]="{'line-through text-[#A5D6A7]/70' : task?.completed}">
+        {{task?.description}}
+      </p>
+      <span class="text-xs text-gray-500 flex items-center gap-2" >
+        <ion-icon name="calendar-clear-outline"></ion-icon>
+        {{task?.createdAt | date: 'medium'}}
+      </span>
+    </section>
+
+    <!--Button delete task-->
+    <button 
+    class="flex items-center justify-center h-6 w-7 rounded-full hover:text-[#FF5252] hover:bg-[#100b0b] text-lg"
+    (click)="deleteTask(task)">
+      <ion-icon name="trash-outline"></ion-icon>
+    </button>
+  </mat-card-content>  
+  }
+  
+</mat-card>
+
+<ng-template #noTask >
+  <div class="text-center">
+    <span class="text-gray-400 ">No hay tareas</span>
+  </div>
+</ng-template>

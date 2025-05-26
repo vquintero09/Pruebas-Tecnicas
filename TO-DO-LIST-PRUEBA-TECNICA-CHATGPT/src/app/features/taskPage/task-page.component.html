@@ -1,0 +1,32 @@
+<main class="min-h-screen bg-[#121920] p-4 md:p-8 flex justify-center items-center">
+  <mat-card class="w-[450px] card relative text-gray-100 shadow-xl">
+
+    <mat-card-header class="flex justify-center items-center gap-2 border-b border-gray-700 rounded-t-lg font-bold ">
+      <ion-icon color="red" class="h-6 w-6 mb-4" name="checkmark-done-outline"></ion-icon>
+      <p class="text-2xl">Mi lista de Tareas</p>
+    </mat-card-header>
+
+    <mat-card-content class="space-y-3 m-6 content">
+      <app-task-form ngSkipHydration (taskAdded)="showToastCard($event)"></app-task-form>
+
+      <section class="flex items-center gap-3 text-xs font-medium">
+        <div class="border p-2 rounded-full bg-[#2D3339] border-gray-700 ">
+          <span>Pendientes: {{incompletas}}</span>
+        </div>
+        <div class="border p-2 rounded-full bg-[#2D3339] border-gray-700 ">
+          <span class="text-[#4CAF50]">Completadas: {{completed}}</span>
+        </div>
+      </section>
+
+      <section>
+        <app-task-filter (taskFilter)="setFilter($event)"></app-task-filter>
+      </section>
+
+      <section>
+        <app-task-list [filter]="filter"></app-task-list>
+      </section>
+    </mat-card-content>
+  </mat-card>
+
+  <app-custom-snackbar [title]="toastMessage" [showToast]="showToast"></app-custom-snackbar>
+</main>

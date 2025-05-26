@@ -1,0 +1,23 @@
+.card{
+  background-color: #1E2429;
+  border: none;
+}
+.content {
+  display: flex; 
+  background-color: #2D3339;
+  width: 100%; 
+  border-radius: 8px;
+  border: 1px solid #374151;
+  min-height: 80px;
+  padding: 18px;
+
+  &:not(:first-child) {
+    margin-top: 15px;
+  }
+}
+
+//
+
+.completed {
+  background-color:#1E3B33 ;
+}
