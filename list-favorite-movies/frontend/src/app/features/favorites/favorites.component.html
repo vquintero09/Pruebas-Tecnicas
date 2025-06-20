@@ -1,0 +1,15 @@
+<main class="min-h-[calc(100vh-72px)] w-4/5 mx-auto max-sm:w-11/12">
+  <h2 class="text-lg font-bold text-white mb-2 pt-6 text-center">Mis Películas Favoritas</h2>
+  <section *ngIf="favoriteMovies.length > 0; else noFavs" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
+    @for (movie of favoriteMovies; track $index) {
+      <app-movie-card
+        [movie]="movie"
+        [isFavorite]="true"
+        (toggleFavorite)="handleToggleFavorite($event)"
+      ></app-movie-card>
+    }
+  </section>
+  <ng-template #noFavs>
+    <p class="text-center text-gray-300 text-lg">Aún no tienes películas favoritas.</p>
+  </ng-template>
+</main>

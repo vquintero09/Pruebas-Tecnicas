@@ -1,0 +1,20 @@
+<mat-card class="card group">
+  <mat-card-content>
+    <img class="w-full h-60 object-cover rounded-lg group-hover:scale-105" [src]="movie.Poster" alt="poster movie">
+    <div class="mt-3">
+      <p class="text-sm line-clamp-1 group-hover:text-purple-400 transition-colors text-white font-semibold">{{movie.Title}}</p>
+      <div class="flex justify-between items-center">
+        <span class="text-gray-500 text-sm">{{movie.Year}}</span>
+        <button
+          (click)="handleOnToggle()"
+          >
+          <ion-icon
+            [name]="isFavorite ? 'bookmark' : 'bookmark-outline'"
+            [ngClass]="isFavorite ? 'text-yellow-300' : 'text-white'"
+            class="text-xl"
+          ></ion-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

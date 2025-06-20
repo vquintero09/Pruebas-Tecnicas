@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "v0font", "Helvetica Neue", sans-serif; }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'v0font';
+}
+
+@font-face {
+  font-family: 'v0font';
+  src: url('assets/fonts/e11418ac562b8ac1-s.p.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}

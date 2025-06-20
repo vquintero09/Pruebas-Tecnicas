@@ -1,0 +1,22 @@
+<main class="min-h-[calc(100vh-72px)] w-4/5 mx-auto max-sm:w-11/12 ">
+  <section class="text-center text-white mt-5">
+    <h3>Descrube peliculas</h3>
+    <p>Encuentra y marca tus peliculas favoritas</p>
+  </section>
+
+  <section class="w-2/4 mx-auto mb-8 mt-5">
+    <app-search-bar (outputSearch)="handleWordEmitted($event)"></app-search-bar>
+  </section>
+  
+  <section *ngIf="!error && foundMovies.length > 0">
+    <app-search-results 
+    [movies]="foundMovies" 
+    [favoriteMovies]="favoriteMovies" 
+    (toggleFavorite)="handleToggleFavorite($event)"
+    ></app-search-results>
+  </section>
+  
+  <div *ngIf="error">
+    {{error}}
+  </div>
+</main>

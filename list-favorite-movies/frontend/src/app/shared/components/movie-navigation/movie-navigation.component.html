@@ -1,0 +1,31 @@
+<nav class="sticky z-10 top-0 border-b backdrop-blur-md transition-colors duration-300 bg-gray-900/80 border-gray-700 bg-gray-500 text-white">
+  <section class="flex justify-between mx-8">
+    <div>
+      <button type="button" class="flex p-2 justify-center items-center gap-2" >
+        <div class="h-10 w-10 flex justify-center items-center bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg">
+          <ion-icon name="film-outline" class="h-8 w-8 "></ion-icon>
+        </div>
+        <h6 class="pt-3">MovieFav</h6>
+      </button>
+    </div>
+
+    <div class="flex items-center gap-1">
+      <button 
+      class="flex p-2 h-10 w-32 gap-2 justify-center items-center text-center rounded-lg"
+      routerLink="/search-page"
+      routerLinkActive="bg-black"
+      >
+        <ion-icon name="search-outline"></ion-icon>
+        <p class="pt-3">Buscar</p>
+      </button>
+
+      <button
+       class="flex h-10 w-32 p-2 gap-2 items-center text-center rounded-lg"
+       routerLink="/favorite-movies"
+       routerLinkActive="bg-black">
+        <ion-icon name="heart-outline"></ion-icon>
+        <p class="pt-3">Favortias</p>
+      </button>
+    </div>
+  </section>
+</nav>
